@@ -2,15 +2,15 @@
   <v-app id="inspire">
     <v-main class="bg-grey-lighten-3">
       <v-container>
-        <v-card class="mx-auto bg-transparent rounded-xl " max-width="400" flat>
+        <v-card class="mx-auto bg-transparent " max-width="400" flat>
           <v-row class="d-flex  text-center bg-transparent mt-0 ">
             <v-col cols="12">
               <v-avatar color="surface-variant" size="100" style="margin-bottom:-2.75rem"></v-avatar>
             </v-col>
           </v-row>
 
-          <v-row class="text-center  px-5 bg-white rounded-t-pill">
-            <v-row class="bg-white rounded-xl elevation-3 " elevation="12" >
+          <v-row class="float-left  px-5 bg-white rounded-t-pill">
+            <v-row class="bg-white rounded-xl elevation-3 text-center">
               <v-col cols="12"></v-col>
               <v-col cols="12">
                 <v-card-item title="Ratthathammanoon" subtitle="Student"></v-card-item>
