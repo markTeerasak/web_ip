@@ -1,27 +1,22 @@
 <template lang="">
     <v-app id="inspire">
-    <v-app-bar
+    <v-app-bar 
       class="px-3"
-      color="white"
+      color="black"
       flat
       density="compact"
     >
-      <v-avatar
-        color="grey-darken-1"
-        size="32"
-      ></v-avatar>
-
-      <v-spacer></v-spacer>
+      <v-app-bar-title>
+        Thungsaliam
+      </v-app-bar-title>
 
       <v-tabs
         centered
         color="grey-darken-2"
       >
         <v-tab
-          v-for="link in links"
-          :key="link"
-        >
-          {{ link }}
+          v-for="link in links" :key="link.text" router :to="link.route">
+          {{ link.text }}
         </v-tab>
       </v-tabs>
       <v-spacer></v-spacer>
@@ -39,10 +34,12 @@
           <v-col
             cols="12"
             sm="2"
+            class="bg-grey-lighten-3"
           >
             <v-sheet
               rounded="lg"
               min-height="268"
+              class="bg-grey-lighten-3"
             >
               <!--  -->
             </v-sheet>
@@ -64,10 +61,12 @@
           <v-col
             cols="12"
             sm="2"
+            class="bg-grey-lighten-3" 
           >
             <v-sheet
               rounded="lg"
               min-height="268"
+              class="bg-grey-lighten-3"
             >
               <!--  -->
             </v-sheet>
@@ -84,9 +83,9 @@
 export default {
   data: () => ({
       links: [
-        'Home',
-        'info',
-        'schedule',
+        {text:"Home",route:"/"},
+        {text:"info",route:"/stuInfo"},
+        {text:"schedule",route:"/"},
       ],
     }),
 }
