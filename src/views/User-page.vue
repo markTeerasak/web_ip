@@ -35,7 +35,7 @@
             <v-col
               cols="12"
               sm="2"
-              class="bg-grey-lighten-3"
+              class="bg-grey-lighten-3 hidden-sm-and-down"
             >
               <v-sheet
                 rounded="lg"
@@ -84,12 +84,11 @@ export default {
     data: () => ({
         links: [
             { text: "Home", route: "/" },
-            { text: "info", route: "/stuInfo" },
-            { text: "schedule", route: "/" },
+            { text: "info", route: "/Info" },
+            { text: "schedule", route: "/Table" },
         ],
     }),
 }
 </script>
-<style lang="">
-    
+<style>
 </style>
