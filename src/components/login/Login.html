@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <v-container>
+        <v-card class="mx-auto px-3 py-5" max-width="450" variant="tonal" style="margin-top: 30vh;">
+                <v-card-item class="">
+                    <div>
+                        <div class="mb-5 text-center text-h3">
+                            Login In
+                        </div>
+                        <v-form class="px-3">
+                            <v-text-field name="student_id" label="Student ID" id="student_id"></v-text-field>
+                            <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1"
+                                label="Password" counter @click:append="show1 = !show1"></v-text-field>
+                        </v-form>
+                    </div>
+                </v-card-item>
+            </v-card>
+    </v-container>
+</body>
+</html>
