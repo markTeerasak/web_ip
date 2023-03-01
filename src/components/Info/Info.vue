@@ -12,8 +12,8 @@
           <v-row class="float-left  px-5 bg-white rounded-t-pill">
             <v-row class="bg-white rounded-xl elevation-3 text-center">
               <v-col cols="12"></v-col>
-              <v-col cols="12">
-                <v-card-item title="Ratthathammanoon" subtitle="Student"></v-card-item>
+              <v-col cols="12" >
+                <v-card-item ><v-card-title>First Name, Last Name</v-card-title></v-card-item>
               </v-col>
               <v-col cols="6">
                 <v-card-item subtitle="Role"><v-card-title>Student</v-card-title></v-card-item>
@@ -24,8 +24,8 @@
               </v-col>
             </v-row>
             
-            <v-col cols="12" v-for="data in datas" :key="data.text">
-              <v-card-item><v-card-subtitle>{{data.text}}</v-card-subtitle><p>{{data.res}}</p></v-card-item>
+            <v-col cols="12" v-for="(item,index) in tea " :key="index" :value="item.text">
+              <v-card-item v-if="index!=1"><v-card-subtitle>{{item.text}}</v-card-subtitle><p>{{item.res}}</p></v-card-item>
             </v-col>
           
           </v-row>
@@ -42,10 +42,24 @@
 </template>
 <script>
 export default {
-  name: "stu-info",
+  name: "inFo",
   data: () => ({
-    datas: [
+    stu: [
       { text: "StudentID", res: "S15236" },
+      { text: "Gender", res: "Male" },
+      { text: "SocialID", res: "16489000000000" },
+      { text: "Birthday", res: "2022-12-13" },
+      { text: "Nationality", res: "Thai" },
+      { text: "PhoneNumber", res: "0942356897" },
+      { text: "DadName", res: "Nung Comeyai" },
+      { text: "MomNane", res: "Nan Comeyai" },
+      { text: "ParentName", res: "Nung Comeyai" },
+      { text: "ParentPhoneNumber", res: "0856347896" },
+      { text: "Status", res: "Study" },
+    ],
+    tea: [
+      { text: "StudentID", res: "T12345" },
+      { text: "Name", res: "Dang Comeyai" },
       { text: "Gender", res: "Male" },
       { text: "SocialID", res: "16489000000000" },
       { text: "Birthday", res: "2022-12-13" },
