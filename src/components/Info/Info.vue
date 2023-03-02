@@ -12,22 +12,30 @@
           <v-row class="float-left  px-5 bg-white rounded-t-pill">
             <v-row class="bg-white rounded-xl elevation-3 text-center">
               <v-col cols="12"></v-col>
-              <v-col cols="12" >
-                <v-card-item ><v-card-title>First Name, Last Name</v-card-title></v-card-item>
+              <v-col cols="12">
+                <v-card-item ><v-card-title>&nbsp;{{stu.fist_name}}&nbsp;{{stu.last_name}}</v-card-title></v-card-item>
               </v-col>
               <v-col cols="6">
                 <v-card-item subtitle="Role"><v-card-title>Student</v-card-title></v-card-item>
               </v-col>
                 <v-divider vertical></v-divider>
               <v-col cols="6">
-                <v-card-item subtitle="Class"><v-card-title>ประถม 6</v-card-title></v-card-item>
+                <v-card-item subtitle="Class"><v-card-title>{{stu.grade}}/{{stu.room}}</v-card-title></v-card-item>
               </v-col>
             </v-row>
             
-            <v-col cols="12" v-for="(item,index) in stu " :key="index" :value="item.text">
-              <v-card-item v-if="index!=1"><v-card-subtitle>{{item.text}}</v-card-subtitle><p>{{item.res}}</p></v-card-item>
+            <v-col cols="12">
+              <v-card-item><v-card-subtitle>StudentID:'</v-card-subtitle><p>{{stu.student_id}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>Gender:</v-card-subtitle><p>{{stu.gender}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>SocialID:</v-card-subtitle><p>{{stu.solial_id}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>BirthDay:</v-card-subtitle><p>{{stu.bathday}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>Nationality:</v-card-subtitle><p>{{stu.nationality}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>PhoneNumber:</v-card-subtitle><p>{{stu.phone_number}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>FatherName:</v-card-subtitle><p>{{stu.first_name_father}}&nbsp;{{stu.last_name_father}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>MotherName:</v-card-subtitle><p>{{stu.first_name_mother}}&nbsp;{{stu.last_name_mother}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>ParantName:</v-card-subtitle><p>{{stu.fist_name_parent}}&nbsp;{{stu.last_name_parent}}</p></v-card-item>
+              <v-card-item><v-card-subtitle>ParantPhoneNumber:</v-card-subtitle><p>{{stu.phone_number_of_parent}}</p></v-card-item>
             </v-col>
-          
           </v-row>
           
         </v-card>
@@ -47,14 +55,13 @@ import axios from 'axios';
 export default {
   name: "inFo",
   data: () => ({
-    stu: [],
-    
+      stu: [],
   }),
-  mounted(){
-    axios.get('http://localhost/service/student/info.php?key=S15523')
-    .then(function (response) {
-      console.log(response.data);
-    })
+  mounted() {
+    axios.get('http://localhost/service/student/info.php?id=S15523')
+      .then((resp) => {
+        this.stu = resp.data.response[0]
+      })
   }
 };
 
