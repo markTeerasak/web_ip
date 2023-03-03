@@ -4,9 +4,9 @@
           <v-container>
             <v-card class="mx-auto text-center " >
                 <v-card-title>ตาราง</v-card-title>
-                <v-card-subtitle>{{sub.grade}}/{{sub.room}}</v-card-subtitle>
+                <!-- <v-card-subtitle>{{sub[0].grade}}/{{sub[0].room}}</v-card-subtitle> -->
                 <v-card-subtitle>Advisor Name</v-card-subtitle>
-
+                {{sub }}
                 <v-table hover density="comfortable">
                     <thead>
                       <tr>
@@ -20,7 +20,7 @@
                     <tbody>
                       <tr v-for="item in day" :key="item.day">
                         <td class="bg-grey-lighten-1">{{ item.day}}</td>
-                        <td v-for="item in sub" :key="item"> {{item}}</td>
+                        <td v-for="i in time" :key="i.time"><v-for></v-for></td>
                       </tr>
                     </tbody>
                 </v-table>
@@ -51,14 +51,18 @@ export default {
             {time:"14.00-14.50"},
             {time:"15.00-15.50"},
         ],
-        sub: []
+        sub: [],
+        
     }),
+
     mounted() {
     axios.get('http://localhost/service/student/table.php?id=1&room=1')
       .then((resp) => {
         this.sub = resp.data.response
+        // this.sr = resp.data.response[0]
+        console.log(this.sub)
       })
-  }
+    }
 }
 </script>
 <style>
