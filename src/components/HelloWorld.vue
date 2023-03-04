@@ -10,7 +10,7 @@
           Welcome
         </h1>
         <h1 class="display-2 font-weight-bold mb-3">
-          Id, Fname, Lname
+          {{ stu.student_id }}&nbsp;{{ stu.fist_name }}&nbsp;{{stu.last_name}}
         </h1>
       </v-col>
     </v-row>
@@ -19,11 +19,18 @@
 
 <script>
 
+import axios from 'axios';
+
 export default {
   name: 'HelloWorld',
-
   data: () => ({
-   
+      stu: [],
   }),
+  mounted() {
+    axios.get('http://localhost/service/student/info.php?id=S15523')
+      .then((resp) => {
+        this.stu = resp.data.response[0]
+      })
+  }
 }
 </script>

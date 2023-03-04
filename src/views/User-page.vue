@@ -33,10 +33,9 @@
             <v-col cols="12" sm="2" class="bg-grey-lighten-3 ">
               <v-card>
                 <v-card-title>Homework</v-card-title>
-                <ul class="ms-10">
-                  <li>เขียนรายงานภาษาไทย</li>
-                  <li>แบบฝึกหัดที่10</li>
-                  <li>สอบกลางภาค</li>
+                <ul class="ms-10" v-for="item in work" :key="item.work_id">
+                  <li><b>{{item.work_name}}:</b>{{ item. work_details}}//<p style="color:red"><b>รายวิชา</b></p>{{ item.subject_name }}</li>
+                  
                 </ul>
               </v-card>
             </v-col>
@@ -60,6 +59,9 @@
   </div>
 </template>
 <script>
+
+import axios from 'axios';
+
 export default {
   name: 'user-page',
   data: () => ({
@@ -74,7 +76,14 @@ export default {
       {text:"Classmate", route:"/Classmate"},
       {text:"Logout", route:"/"},
     ],
+    work: []
   }),
+  mounted() {
+    axios.get('http://localhost/service/student/work.php?id=S15523')
+      .then((resp) => {
+        this.work = resp.data.response
+      })
+  }
 }
 </script>
 <style></style>

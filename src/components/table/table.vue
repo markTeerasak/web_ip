@@ -4,9 +4,9 @@
           <v-container>
             <v-card class="mx-auto text-center " >
                 <v-card-title>ตาราง</v-card-title>
-                <v-card-subtitle>class</v-card-subtitle>
+                <!-- <v-card-subtitle>{{sub[0].grade}}/{{sub[0].room}}</v-card-subtitle> -->
                 <v-card-subtitle>Advisor Name</v-card-subtitle>
-
+                {{sub }}
                 <v-table hover density="comfortable">
                     <thead>
                       <tr>
@@ -18,13 +18,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr
-                        v-for="item in day"
-                        :key="item.day"
-                      >
+                      <tr v-for="item in day" :key="item.day">
                         <td class="bg-grey-lighten-1">{{ item.day}}</td>
-                        <td v-for="item in sub"
-                        :key="item.sub"> <v-tab router :to="item.route">{{ item.sub }}</v-tab></td>
+                        <td v-for="i in time" :key="i.time"><v-for></v-for></td>
                       </tr>
                     </tbody>
                 </v-table>
@@ -34,6 +30,9 @@
       </v-app>
 </template>
 <script>
+
+import axios from 'axios';
+
 export default {
     name: "taBle",
     data: () => ({
@@ -45,24 +44,25 @@ export default {
             {day:"Fri"},
         ],
         time: [
-            {time:"08.30-09.30"},
-            {time:"09.30-10.30"},
-            {time:"10.30-11.30"},
-            {time:"Break"},
-            {time:"12.30-13.30"},
-            {time:"13.30-14.30"},
-            {time:"14.30-15.30"},
+            {time:"08.00-09.50"},
+            {time:"10.00-10.50"},
+            {time:"11.00-11.50"},
+            {time:"13.00-13.50"},
+            {time:"14.00-14.50"},
+            {time:"15.00-15.50"},
         ],
-        sub: [
-            {sub:"thai",route:"/"},
-            {sub:"Math",route:"/"},
-            {sub:"arts",route:"/"},
-            {sub:"Break",route:"/"},
-            {sub:"history",route:"/"},
-            {sub:"Music",route:"/"},
-            {sub:"relax",route:"/"}
-        ]
-    })
+        sub: [],
+        
+    }),
+
+    mounted() {
+    axios.get('http://localhost/service/student/table.php?id=1&room=1')
+      .then((resp) => {
+        this.sub = resp.data.response
+        // this.sr = resp.data.response[0]
+        console.log(this.sub)
+      })
+    }
 }
 </script>
 <style>

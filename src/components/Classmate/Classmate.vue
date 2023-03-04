@@ -17,10 +17,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, index) in stu" :key="item.id">
-                    <td class="bg-grey-lighten-2">{{ index + 1 }}</td>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.name }}</td>
+                  <tr v-for="(key,index) in stu" :key="key">
+                    <td class="bg-grey-lighten-2">{{index+1}}</td>
+                    <td>{{key.student_id}}</td>
+                    <td>{{ key.fist_name}}&nbsp;{{ key.last_name}}</td>
                   </tr>
                 </tbody>
               </v-table>
@@ -35,19 +35,17 @@
   </v-app>
 </template>
 <script>
+import axios from 'axios';
 export default {
   name: "classMate",
   data: () => ({
-    stu:
-      [
-        { id: "s1", name: "1" },
-        { id: "s2", name: "2" },
-        { id: "s3", name: "3" },
-        { id: "s4", name: "4" },
-        { id: "s5", name: "5" },
-        { id: "s6", name: "6" },
-        { id: "s7", name: "7" },
-      ],
-  })
+    stu:[],
+  }),
+  mounted() {
+    axios.get('http://localhost/service/student/classmate.php?id=1&room=1')
+      .then((resp) => {
+        this.stu = resp.data.response
+      })
+  }
 }
 </script>
